@@ -146,7 +146,8 @@ export default function LoginPage() {
         </form>
 
         <p className="demo-note">
-          Local demo account: aarav
+          Local demo (when enabled): aarav.
+          Use the password configured on auth-service.
         </p>
       </section>
     </main>

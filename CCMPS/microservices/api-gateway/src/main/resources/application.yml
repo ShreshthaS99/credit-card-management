@@ -1,0 +1,44 @@
+spring:
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          default-filters:
+            - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_FIRST
+          routes:
+            - id: authentication
+              uri: lb://auth-service
+              predicates:
+                - Path=/api/auth/**
+            - id: customers
+              uri: lb://customer-service
+              predicates:
+                - Path=/api/customers/**
+            - id: cards-accounts-limits
+              uri: lb://card-service
+              predicates:
+                - Path=/api/cards/**,/api/accounts/**,/api/limits/**,/api/admin/limit-requests/**
+            - id: transactions
+              uri: lb://transaction-service
+              predicates:
+                - Path=/api/transactions/**
+            - id: payments
+              uri: lb://payment-service
+              predicates:
+                - Path=/api/payments/**
+            - id: statements
+              uri: lb://statement-service
+              predicates:
+                - Path=/api/statements/**
+            - id: rewards
+              uri: lb://rewards-service
+              predicates:
+                - Path=/api/rewards/**
+            - id: fraud
+              uri: lb://fraud-service
+              predicates:
+                - Path=/api/fraud/**,/api/admin/fraud-alerts/**
+            - id: administration
+              uri: lb://admin-service
+              predicates:
+                - Path=/api/admin/dashboard
