@@ -6,8 +6,9 @@ import {
 
 import useAuth from "../auth/useAuth";
 
-const navigation = [
-  ["/", "Overview"],
+
+  const navigation = [
+  ["/dashboard", "Overview"],
   ["/cards", "My cards"],
   ["/transactions", "Transactions"],
   ["/payments", "Payments"],
@@ -50,7 +51,7 @@ export default function AppLayout() {
             <NavLink
               key={path}
               to={path}
-              end={path === "/"}
+              end={path === "/dashboard"}
               className={({ isActive }) =>
                 isActive
                   ? "nav-link active"

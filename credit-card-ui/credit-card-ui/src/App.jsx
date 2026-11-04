@@ -8,6 +8,7 @@ import {
 import ProtectedRoute from "./auth/ProtectedRoute";
 import AppLayout from "./components/AppLayout";
 
+import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import CardsPage from "./pages/CardsPage";
@@ -18,65 +19,82 @@ import LimitsPage from "./pages/LimitsPage";
 import RewardsPage from "./pages/RewardsPage";
 import FraudPage from "./pages/FraudPage";
 import ProfilePage from "./pages/ProfilePage";
+
 import "./styles/app.css";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+
+        {/* Public routes */}
+
+        <Route
+          path="/"
+          element={<HomePage />}
+        />
+
         <Route
           path="/login"
           element={<LoginPage />}
         />
 
+
+        {/* Protected routes */}
+
         <Route element={<ProtectedRoute />}>
           <Route element={<AppLayout />}>
+
             <Route
-              index
+              path="/dashboard"
               element={<DashboardPage />}
             />
 
             <Route
-              path="cards"
+              path="/cards"
               element={<CardsPage />}
             />
 
             <Route
-              path="transactions"
+              path="/transactions"
               element={<TransactionsPage />}
             />
 
             <Route
-              path="payments"
+              path="/payments"
               element={<PaymentsPage />}
             />
 
             <Route
-              path="statements"
+              path="/statements"
               element={<StatementsPage />}
             />
 
             <Route
-              path="limits"
+              path="/limits"
               element={<LimitsPage />}
             />
 
             <Route
-              path="rewards"
+              path="/rewards"
               element={<RewardsPage />}
             />
 
             <Route
-              path="fraud"
+              path="/fraud"
               element={<FraudPage />}
             />
-            <Route
-  path="profile"
-  element={<ProfilePage />}
-/>
-          </Route>
 
+            <Route
+              path="/profile"
+              element={<ProfilePage />}
+            />
+
+          </Route>
         </Route>
+
+
+        {/* Unknown route */}
 
         <Route
           path="*"
@@ -87,6 +105,7 @@ export default function App() {
             />
           }
         />
+
       </Routes>
     </BrowserRouter>
   );

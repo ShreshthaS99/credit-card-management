@@ -31,13 +31,13 @@ export default function LoginPage() {
     useState("");
 
   if (authenticated) {
-    return (
-      <Navigate
-        to="/"
-        replace
-      />
-    );
-  }
+  return (
+    <Navigate
+      to="/dashboard"
+      replace
+    />
+  );
+}
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -62,9 +62,9 @@ export default function LoginPage() {
       );
 
       navigate(
-        "/",
-        { replace: true }
-      );
+  "/dashboard",
+  { replace: true }
+);
 
     } catch (requestError) {
       setError(
